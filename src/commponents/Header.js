@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { NameContext } from '../App'
 
-function Header({color}) {
+function Header() {
+    const {name} = useContext(NameContext)
+        
     return (
         <div>
-            <header style={{backgroundColor: color}} className='header'>
-                <h1>Pavadinimas</h1>
+            <header className='header'>
+                <span>{name}</span>
             </header>
         </div>
     )

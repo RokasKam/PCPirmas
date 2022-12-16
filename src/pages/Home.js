@@ -1,19 +1,28 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Buttons from '../commponents/Buttons'
-import Footer from '../commponents/Footer'
 import Header from '../commponents/Header'
+import axios from 'axios';
+import { NameContext } from '../App';
+import { useNavigate } from 'react-router-dom';
+
 
 
 function Home() {
-    localStorage.setItem('years', 2022);
+    const {name, setName} = useContext(NameContext);
+    const navigate = useNavigate();
+    const handleSubmit = () => {
+        navigate('List')
+        alert(name);
+    }
     return (
         <div>
-            <Header color='green' />
-            <img src='https://img.freepik.com/free-photo/group-people-working-out-business-plan-office_1303-15861.jpg?w=1800&t=st=1669221447~exp=1669222047~hmac=2bf946ac460846e40bdcdef24c2bb4bd0b845916ada1116857b74a320fef464f' />
-            <Buttons name='List' color='blue' whereToGo='List'/>
-            <Footer years={localStorage.getItem('years')} />
+            <form onSubmit={handleSubmit}>
+                <label for="fname">First name:</label><br></br>
+                <input type="text" value={name} onChange={e => setName(e.target.value)}/><br></br>
+                <input type="submit" value="Submit"></input>
+            </form> 
         </div>
     )
 }
 
-export default Home
+export default Home;

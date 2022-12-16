@@ -1,11 +1,14 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom';
-function Buttons({name, color, whereToGo, details}) {
-    const navigate = useNavigate();
+import React, { useState } from 'react'
+function Buttons() {
+    const [count, setCount] = useState(0);
 
+    const increase = () => {
+      setCount(count + 1);
+
+    }
   return (
-    <button style={{backgroundColor: color}} onClick={() => navigate(whereToGo, { state: details })}>
-        {name}
+    <button onClick={increase}>
+        Click Count:{count}
     </button>
   )
 }
