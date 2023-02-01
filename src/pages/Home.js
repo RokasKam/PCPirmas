@@ -19,7 +19,7 @@ function Home() {
         onChange={(e) => setDate(e.target.value)}></input><br></br>
       <input type="submit" value="Submit"></input>
       </form> 
-      <p>{age}</p>
+      <p>Year:{age.ageNow}Month:{age.monthsNow}</p>
     </div>
     )
 }
