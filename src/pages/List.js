@@ -1,27 +1,22 @@
 import React from 'react'
+import Banner from '../commponents/Banner'
 import Buttons from '../commponents/Buttons'
 import Footer from '../commponents/Footer'
 import Header from '../commponents/Header'
+import Search from '../commponents/Search'
+import SideBar from '../commponents/SideBar'
 
 function List() {
-    const handleChange = (option) => {
-        if(option === '.dropdown'){
-            alert(option);
-        }
-    }
     return (
         <div>
-            <Header/>
-            <form onChange={e => handleChange(e.target.value)}>
-            <label for="cars">Choose a car:</label>
-            <select name="cars" id="cars">
-                <option value=".input">.input</option>
-                <option value=".dropdown">.dropdown</option>
-                <option value=".noBorders">.noBorders</option>
-            </select>
-            </form>
+            <SideBar>
+                <img src='https://www.freepnglogos.com/uploads/deadpool-png/deadpool-png-anna-anarchy-deviantart-9.png' height={300}></img>
+            </SideBar>
+            <Search/>
+            <Banner text={'3'}/>
+            <Banner text={'1'}/>
         </div>
     )
 }
 
-export default List
+export default List;

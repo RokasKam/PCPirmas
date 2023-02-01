@@ -1,27 +1,26 @@
-import React, { useContext, useEffect, useState } from 'react'
-import Buttons from '../commponents/Buttons'
-import Header from '../commponents/Header'
-import axios from 'axios';
-import { NameContext } from '../App';
-import { useNavigate } from 'react-router-dom';
-
-
+import React, { useState } from 'react'
+import { ageCalculator } from '../services/ageCalculator';
 
 function Home() {
-    const {name, setName} = useContext(NameContext);
-    const navigate = useNavigate();
-    const handleSubmit = () => {
-        navigate('List')
-        alert(name);
+    const [date, setDate] = useState(new Date());
+    const [age, setAge] = useState();
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      setAge(ageCalculator(date));
     }
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <label for="fname">First name:</label><br></br>
-                <input type="text" value={name} onChange={e => setName(e.target.value)}/><br></br>
-                <input type="submit" value="Submit"></input>
-            </form> 
-        </div>
+    <div>
+      <form onSubmit={handleSubmit}>
+      <label for="fname">Date:</label><br></br>
+      <input 
+        type="date" 
+        name="Date" 
+        value={date}
+        onChange={(e) => setDate(e.target.value)}></input><br></br>
+      <input type="submit" value="Submit"></input>
+      </form> 
+      <p>{age}</p>
+    </div>
     )
 }
 
